@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7d1ad6f2a38ee4c9721eb4c349e31c, type: 3}
+  m_Name: PlayerTeam
+  m_EditorClassIdentifier: 
+  _targetTeam: {fileID: 11400000, guid: 69c45691355ba114ebfa28632d40cc6c, type: 2}
+  _main: {fileID: 11400000, guid: b700af83b102648488834cbacfb675da, type: 2}
+  _support: {fileID: 11400000, guid: f71a848aa6ea65242808b5fee528bc18, type: 2}

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc7d1ad6f2a38ee4c9721eb4c349e31c, type: 3}
+  m_Name: EnemyTeam
+  m_EditorClassIdentifier: 
+  _targetTeam: {fileID: 11400000, guid: 163f7eff09c24534db49bd064c2f4c4e, type: 2}
+  _main: {fileID: 11400000, guid: 745ab816c301fd7448f2b538210bfef2, type: 2}
+  _support: {fileID: 11400000, guid: 0afe79cd60c9f0941b2e1fe421edcde0, type: 2}

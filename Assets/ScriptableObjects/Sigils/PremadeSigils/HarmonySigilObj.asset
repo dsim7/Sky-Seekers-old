@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f5635272fc0fb4cb477420da87c4a4, type: 3}
+  m_Name: HarmonySigilObj
+  m_EditorClassIdentifier: 
+  _template: {fileID: 11400000, guid: 5978514fb21f73e4d8f1e6e83158ff30, type: 2}
+  charges: 3

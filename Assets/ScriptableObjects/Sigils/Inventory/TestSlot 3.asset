@@ -1,0 +1,14 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934ac1c9cc3dae54c847257a39bd119e, type: 3}
+  m_Name: TestSlot 3
+  m_EditorClassIdentifier: 
+  _value: {fileID: 11400000, guid: b48be31c443a2744b8a888d56ffc5e27, type: 2}

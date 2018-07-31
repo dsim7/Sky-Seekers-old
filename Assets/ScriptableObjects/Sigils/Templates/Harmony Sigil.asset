@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60805e3671f9c824083cca67df5c56ed, type: 3}
+  m_Name: Harmony Sigil
+  m_EditorClassIdentifier: 
+  templateSet: {fileID: 11400000, guid: ca6d16ece8f7b444eac9eaacfb70e9d9, type: 2}
+  _name: Harmony Sigil
+  _icon: {fileID: 21300000, guid: 6268e089d2a8bee459a183906f16fc4e, type: 3}
+  _description: "Reduce cooldown of Utility Ability.\r\n\r\nThe silver dragon, Argenza,
+    attempted to prove that human and dragon could live together in peace. Her actions
+    were seen as treasonous by her kind and they mutilated her wings as punishment. "

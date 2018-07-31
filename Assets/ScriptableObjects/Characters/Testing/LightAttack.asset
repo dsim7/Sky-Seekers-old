@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c34b7bbad2e62242a40868f916b8fd8, type: 3}
+  m_Name: LightAttack
+  m_EditorClassIdentifier: 
+  _cooldown: {fileID: 11400000, guid: 31590868ec0b7f143afb8ea6395923c3, type: 2}
+  _effector: {fileID: 11400000, guid: c6a6a0b683a2a8a469cb14bd1ac241b8, type: 2}
+  _baseDamage: 10
+  _baseSpeed: 5
