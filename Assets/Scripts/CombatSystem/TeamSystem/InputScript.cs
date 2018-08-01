@@ -10,7 +10,7 @@ public class InputScript : MonoBehaviour {
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            teamController.DoLightAttack.Invoke();
+            teamController.DoLightAttack();
         }
     }
 }

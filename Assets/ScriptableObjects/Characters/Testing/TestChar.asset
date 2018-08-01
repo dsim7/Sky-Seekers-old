@@ -14,13 +14,13 @@ MonoBehaviour:
   _name: Monk
   _avatar: {fileID: 21300000, guid: 389ad157a90e9a6419ca6e9f1f6c1ea6, type: 3}
   _health: 150
-  _curHealth: 0
+  _curHealth: -380
   _attackPower: 10
   _armor: 1.5
   _equipped: {fileID: 11400000, guid: e2dcaef4950b8924b8738e40b63ab286, type: 2}
-  _lightAttack: {fileID: 11400000, guid: 916043ca26c7d744d9eec1579cd2529c, type: 2}
-  _heavyAttack: {fileID: 11400000, guid: 683564ccb5953a04eae4ca622fe86dd4, type: 2}
-  _specialAttack: {fileID: 11400000, guid: aaf1f73f97ac9e748991aba707c6e554, type: 2}
-  _supportAbility: {fileID: 11400000, guid: cd9613f4a5b126c42ab13d36a7ac695e, type: 2}
-  _defensiveAbility: {fileID: 11400000, guid: 30066ee9d9275f640aad6dfb8a95b987, type: 2}
+  _lightAttack: {fileID: 0}
+  _heavyAttack: {fileID: 0}
+  _specialAttack: {fileID: 0}
+  _supportAbility: {fileID: 0}
+  _defensiveAbility: {fileID: 0}
   _isDefending: 1

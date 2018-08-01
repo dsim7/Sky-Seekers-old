@@ -6,17 +6,32 @@ using UnityEngine.Events;
 [CreateAssetMenu]
 public class TeamController : ScriptableObject
 {
-    public Team team;
+    public Team Team;
+    
+    public void DoLightAttack()
+    {
+        Team.DoLightAttack();
+    }
 
-    public UnityEvent DoLightAttack;
-    
-    public UnityEvent DoHeavyAttack;
-    
-    public UnityEvent DoSpecialAttack;
-    
-    public UnityEvent DoDefensiveAbility;
-    
-    public UnityEvent DoSupportAbility;
+    public void DoHeavyAttack()
+    {
+
+    }
+
+    public void DoSpecialAttack()
+    {
+
+    }
+
+    public void DoDefensiveAbility()
+    {
+
+    }
+
+    public void DoSupportAbility()
+    {
+
+    }
 
 
 }

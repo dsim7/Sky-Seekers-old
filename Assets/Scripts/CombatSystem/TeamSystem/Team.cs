@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Team : ScriptableObject
 {
-
     [SerializeField]
     private Team _targetTeam;
     public Team TargetTeam { get { return _targetTeam; } set { _targetTeam = value; } }
@@ -17,7 +16,6 @@ public class Team : ScriptableObject
     [SerializeField]
     private Character _support;
     public Character Support { get { return _support; } set { _support = value; } }
-
 
     public void DoLightAttack()
     {

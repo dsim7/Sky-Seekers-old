@@ -13,4 +13,6 @@ public abstract class CooldownHandler : ScriptableObject
     public abstract bool OffCooldown();
 
     public abstract void StartCooldown();
+
+    public abstract void UpdateCooldown();
 }

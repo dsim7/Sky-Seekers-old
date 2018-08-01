@@ -71,8 +71,12 @@ public class Character : ScriptableObject {
     public PriorityEvent<Attack> OnEnemyAttackHit = new PriorityEvent<Attack>();
 
     //public PriorityEvent<Utility> OnSupportUsed = new PriorityEvent<Utility>();
-    
+
     //public PriorityEvent<Utility> OnDefensiveUsed = new PriorityEvent<Utility>();
+
+    [SerializeField]
+    private bool _isUsingAbility = false;
+    public bool IsUsingAbility { get { return _isUsingAbility; } set { _isUsingAbility = value; } }
 
     [SerializeField]
     private bool _isDefending;
@@ -88,12 +92,26 @@ public class Character : ScriptableObject {
         Equipped.Slots.ForEach(slot => ((SigilTemplate)slot.Value.Template).UnmodifyCharacter(this));
     }
 
+    public void UpdateCooldowns()
+    {
+        if (LightAttack != null)
+            LightAttack.Cooldowner.UpdateCooldown();
+        if (HeavyAttack != null)
+            HeavyAttack.Cooldowner.UpdateCooldown();
+        if (SpecialAttack != null)
+            SpecialAttack.Cooldowner.UpdateCooldown();
+        if (SupportAbility != null)
+            SupportAbility.Cooldowner.UpdateCooldown();
+        if (DefensiveAbility != null)
+            DefensiveAbility.Cooldowner.UpdateCooldown();
+    }
+
     public void DoLightAttack(Character user, Character target)
     {
-        Debug.Log(user);
-        Debug.Log(target);
-        LightAttack.Initialize(user, target);
-        LightAttack.StartAction();
+        if (!IsUsingAbility)
+        {
+            LightAttack.StartAction(user, target);
+        }
     }
 
 }

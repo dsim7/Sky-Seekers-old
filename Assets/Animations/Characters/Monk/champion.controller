@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: monk
+  m_Name: champion
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Attack
@@ -238,7 +238,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c12b4addcd42ce54f9f2e48aad088479, type: 2}
+  m_Motion: {fileID: 7400000, guid: 7399aba0b7df19e4785a89a4bb913f9f, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -264,7 +264,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e540701cbbcb67e439c85ebdff80f4a9, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0e2ac3ff766be434fbe2f38138368737, type: 2}
   m_Tag: 
   m_SpeedParameter: AttackSpeed
   m_MirrorParameter: 
@@ -289,7 +289,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e061a77c5a1800644b3fc534e2bd823d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 57dd797204d6eae40b31aaa4afb718df, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -315,7 +315,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e36e0bc52cdd4d74d94e7f4e15378589, type: 2}
+  m_Motion: {fileID: 7400000, guid: afddcac666a193b458bbbcc7c2273115, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -340,7 +340,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 015cf287220205545be5f2f7fbfe2ff1, type: 2}
+  m_Motion: {fileID: 7400000, guid: bb7fa19505b60cf47b6202ae2859ee33, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

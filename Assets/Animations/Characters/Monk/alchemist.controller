@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: monk
+  m_Name: alchemist
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Attack
@@ -238,7 +238,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c12b4addcd42ce54f9f2e48aad088479, type: 2}
+  m_Motion: {fileID: 7400000, guid: 5de4e0461fb75e0458ce8aae3b5c55f3, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -264,7 +264,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e540701cbbcb67e439c85ebdff80f4a9, type: 2}
+  m_Motion: {fileID: 7400000, guid: 688c530da767b694dab504b7ebfe3c26, type: 2}
   m_Tag: 
   m_SpeedParameter: AttackSpeed
   m_MirrorParameter: 
@@ -289,7 +289,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e061a77c5a1800644b3fc534e2bd823d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 124374407f44d42469ea5ff645f59765, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -315,7 +315,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e36e0bc52cdd4d74d94e7f4e15378589, type: 2}
+  m_Motion: {fileID: 7400000, guid: 26ae0e27716d4c94ab671536e48416e7, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -340,7 +340,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 015cf287220205545be5f2f7fbfe2ff1, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9e46d6bdfa850354b8604cfe03f5d710, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

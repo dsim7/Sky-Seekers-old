@@ -28,12 +28,19 @@ public class AttackTemplate : ActionTemplate<Attack>
     private float _baseSpeed;
     public float BaseSpeed { get { return _baseSpeed; } set { _baseSpeed = value; } }
 
-    public override void Initialize(Character user, Character target)
+    protected override bool Initialize(Character user, Character target)
     {
-        base.Initialize(user, target);
-        _attack.Damage = _baseDamage;
-        _attack.Speed = _baseSpeed;
-        _attack.Template = this;
+        if (Cooldowner.OffCooldown() && ActionInstance == null)
+        {
+            ActionInstance = new Attack();
+            ActionInstance.User = user;
+            ActionInstance.Target = target;
+            ActionInstance.Template = this;
+            ActionInstance.Damage = _baseDamage;
+            ActionInstance.Speed = _baseSpeed;
+            return true;
+        }
+        return false;
     }
 }
 

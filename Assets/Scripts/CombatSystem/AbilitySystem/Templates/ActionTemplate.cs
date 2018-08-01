@@ -1,10 +1,19 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 
-public abstract class ActionTemplate<T> : ScriptableObject where T : Ability, new()
+public abstract class ActionTemplate : ScriptableObject
+{
+    [SerializeField]
+    private string _animationName;
+    public string AnimationName { get { return _animationName; } set { _animationName = value; } }
+
+    protected abstract bool Initialize(Character user, Character target);
+
+    public abstract void StartAction(Character user, Character target);
+
+    public abstract void CompleteAction();
+}
+
+public abstract class ActionTemplate<T> : ActionTemplate where T : Ability, new()
 {
     public abstract T ActionInstance { get; set; }
 
@@ -14,27 +23,29 @@ public abstract class ActionTemplate<T> : ScriptableObject where T : Ability, ne
 
     public abstract ActionEffector<T> Effector { get; set; }
 
-    public virtual void Initialize(Character user, Character target)
+    protected override bool Initialize(Character user, Character target)
     {
-        Debug.Log("Initialization: " + Cooldowner.OffCooldown() + " " + ActionInstance);
+        Debug.Log(((BasicCooldownHandler)Cooldowner).TimeRemaining);
         if (Cooldowner.OffCooldown() && ActionInstance == null)
         {
-            Debug.Log("Got in");
             ActionInstance = new T();
             ActionInstance.User = user;
             ActionInstance.Target = target;
+            ActionInstance.Template = this;
+            return true;
         }
+        return false;
     }
 
-    public void StartAction()
+    public override void StartAction(Character user, Character target)
     {
-        if (ActionInstance != null)
+        if (Initialize(user, target))
         {
             Processor.ProcessStartEvents(ActionInstance);
         }
     }
 
-    public void CompleteAction()
+    public override void CompleteAction()
     {
         if (ActionInstance != null)
         {

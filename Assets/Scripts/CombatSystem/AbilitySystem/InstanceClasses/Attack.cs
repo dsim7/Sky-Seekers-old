@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class Attack : Ability
 {
-    public AttackTemplate Template { get; set; }
+    //public new AttackTemplate Template { get; set; }
     public float Damage { get; set; }
-    public float Speed { get; set; }
     public bool Miss { get; set; }
 }
