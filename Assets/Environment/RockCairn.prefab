@@ -9,43 +9,43 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1579836482634884}
+  m_RootGameObject: {fileID: 1004759361872956}
   m_IsPrefabAsset: 1
---- !u!1 &1579836482634884
+--- !u!1 &1004759361872956
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4326356156742050}
-  - component: {fileID: 212767265303811542}
+  - component: {fileID: 4976261319073836}
+  - component: {fileID: 212183913512013314}
   m_Layer: 0
-  m_Name: RockPath4
+  m_Name: RockCairn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4326356156742050
+--- !u!4 &4976261319073836
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1579836482634884}
+  m_GameObject: {fileID: 1004759361872956}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00003426918}
-  m_LocalPosition: {x: 14.445724, y: -0.17999998, z: 0.03418427}
-  m_LocalScale: {x: 1.2049794, y: 1.1827439, z: 1.2049794}
+  m_LocalPosition: {x: 7.7799053, y: 0.21, z: -8.891233}
+  m_LocalScale: {x: 3.8976738, y: 4.208325, z: 3.8976738}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &212767265303811542
+--- !u!212 &212183913512013314
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1579836482634884}
+  m_GameObject: {fileID: 1004759361872956}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,15 +72,15 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 2094441485
-  m_SortingLayer: -2
-  m_SortingOrder: 20
-  m_Sprite: {fileID: 21300038, guid: 74673f9934429b64cb1f34ae3f958274, type: 3}
+  m_SortingLayerID: 381514493
+  m_SortingLayer: -7
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300016, guid: 6167b5d3cb29d52488e611c0cb2a074c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5410156, y: 0.875}
+  m_Size: {x: 0.6953125, y: 1.9472656}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
