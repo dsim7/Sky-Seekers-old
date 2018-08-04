@@ -3,11 +3,11 @@
 [CreateAssetMenu(menuName = "Sigils/Templates/TerrorSigil")]
 public class TerrorSigil : SigilTemplate
 {
-    private PriorityAction<Attack> _mod;
+    private PriorityAction<ActionInstance> _mod;
 
     public override void ModifyCharacter(Character character)
     {
-        _mod = new PriorityAction<Attack>(10, Effect);
+        _mod = new PriorityAction<ActionInstance>(10, Effect);
         character.OnEnemyAttackDefended.RegisterAction(_mod);
     }
 
@@ -19,7 +19,7 @@ public class TerrorSigil : SigilTemplate
         }
     }
 
-    public void Effect(Attack utility)
+    public void Effect(ActionInstance utility)
     {
         Debug.Log("Terror Sigil Effect");
     }

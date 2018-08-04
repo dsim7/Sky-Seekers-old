@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [CreateAssetMenu]
-public class AttackEffector : ActionEffector<Attack>
+public class AttackEffector : ActionEffector
 {
-    public override void Effect(Attack instance)
+    public override void Effect(ActionInstance action)
     {
-        Debug.Log("Attack deals " + instance.Damage + " damage");
-        instance.Target.CurrentHealth -= instance.Damage;
+        Debug.Log("Attack deals " + action.Damage + " damage");
+        action.Target.CurrentHealth -= action.Damage;
     }
 }

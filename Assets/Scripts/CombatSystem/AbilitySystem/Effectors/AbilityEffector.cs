@@ -5,15 +5,13 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [CreateAssetMenu]
-public class AbilityEffector : ActionEffector<Ability>
+public class AbilityEffector : ActionEffector
 {
-    public AbilityEvent AbilityEvent;
-
-    public override void Effect(Ability instance)
+    public override void Effect(ActionInstance action)
     {
-        AbilityEvent.Invoke(instance);
+        action.Effect.Invoke();
     }
 }
 
-[Serializable]
-public class AbilityEvent : UnityEvent<Ability> { }
+//[Serializable]
+//public class AbilityEvent : UnityEvent<AbilityData> { }

@@ -39,36 +39,36 @@ public class Character : ScriptableObject {
 
     [Header("Abilities")]
     [SerializeField]
-    private AttackTemplate _lightAttack;
-    public AttackTemplate LightAttack { get { return _lightAttack; } set { _lightAttack = value; } }
+    private ActionTemplate _lightAttack;
+    public ActionTemplate LightAttack { get { return _lightAttack; } set { _lightAttack = value; } }
     
     [SerializeField]
-    private AttackTemplate _heavyAttack;
-    public AttackTemplate HeavyAttack { get { return _heavyAttack; } set { _heavyAttack = value; } }
+    private ActionTemplate _heavyAttack;
+    public ActionTemplate HeavyAttack { get { return _heavyAttack; } set { _heavyAttack = value; } }
 
     [SerializeField]
-    private AttackTemplate _specialAttack;
-    public AttackTemplate SpecialAttack { get { return _specialAttack; } set { _specialAttack = value; } }
+    private ActionTemplate _specialAttack;
+    public ActionTemplate SpecialAttack { get { return _specialAttack; } set { _specialAttack = value; } }
 
     [SerializeField]
-    private AbilityTemplate _supportAbility;
-    public AbilityTemplate SupportAbility { get { return _supportAbility; } set { _supportAbility = value; } }
+    private ActionTemplate _supportAbility;
+    public ActionTemplate SupportAbility { get { return _supportAbility; } set { _supportAbility = value; } }
 
     [SerializeField]
-    private AbilityTemplate _defensiveAbility;
-    public AbilityTemplate DefensiveAbility { get { return _defensiveAbility; } set { _defensiveAbility = value; } }
+    private ActionTemplate _defensiveAbility;
+    public ActionTemplate DefensiveAbility { get { return _defensiveAbility; } set { _defensiveAbility = value; } }
 
-    public PriorityEvent<Attack> OnAttackStart = new PriorityEvent<Attack>();
-    public PriorityEvent<Attack> OnAttackConnect = new PriorityEvent<Attack>();
-    public PriorityEvent<Attack> OnAttackDefended = new PriorityEvent<Attack>();
-    public PriorityEvent<Attack> OnAttackMiss = new PriorityEvent<Attack>();
-    public PriorityEvent<Attack> OnAttackHit = new PriorityEvent<Attack>();
+    public PriorityEvent<ActionInstance> OnAttackStart = new PriorityEvent<ActionInstance>();
+    public PriorityEvent<ActionInstance> OnAttackConnect = new PriorityEvent<ActionInstance>();
+    public PriorityEvent<ActionInstance> OnAttackDefended = new PriorityEvent<ActionInstance>();
+    public PriorityEvent<ActionInstance> OnAttackMiss = new PriorityEvent<ActionInstance>();
+    public PriorityEvent<ActionInstance> OnAttackHit = new PriorityEvent<ActionInstance>();
 
-    public PriorityEvent<Attack> OnEnemyAttackStart = new PriorityEvent<Attack>();
-    public PriorityEvent<Attack> OnEnemyAttackConnect = new PriorityEvent<Attack>();
-    public PriorityEvent<Attack> OnEnemyAttackDefended = new PriorityEvent<Attack>();
-    public PriorityEvent<Attack> OnEnemyAttackMiss = new PriorityEvent<Attack>();
-    public PriorityEvent<Attack> OnEnemyAttackHit = new PriorityEvent<Attack>();
+    public PriorityEvent<ActionInstance> OnEnemyAttackStart = new PriorityEvent<ActionInstance>();
+    public PriorityEvent<ActionInstance> OnEnemyAttackConnect = new PriorityEvent<ActionInstance>();
+    public PriorityEvent<ActionInstance> OnEnemyAttackDefended = new PriorityEvent<ActionInstance>();
+    public PriorityEvent<ActionInstance> OnEnemyAttackMiss = new PriorityEvent<ActionInstance>();
+    public PriorityEvent<ActionInstance> OnEnemyAttackHit = new PriorityEvent<ActionInstance>();
 
     //public PriorityEvent<Utility> OnSupportUsed = new PriorityEvent<Utility>();
 
@@ -95,22 +95,22 @@ public class Character : ScriptableObject {
     public void UpdateCooldowns()
     {
         if (LightAttack != null)
-            LightAttack.Cooldowner.UpdateCooldown();
+            LightAttack.Cooldown.UpdateCooldown();
         if (HeavyAttack != null)
-            HeavyAttack.Cooldowner.UpdateCooldown();
+            HeavyAttack.Cooldown.UpdateCooldown();
         if (SpecialAttack != null)
-            SpecialAttack.Cooldowner.UpdateCooldown();
+            SpecialAttack.Cooldown.UpdateCooldown();
         if (SupportAbility != null)
-            SupportAbility.Cooldowner.UpdateCooldown();
+            SupportAbility.Cooldown.UpdateCooldown();
         if (DefensiveAbility != null)
-            DefensiveAbility.Cooldowner.UpdateCooldown();
+            DefensiveAbility.Cooldown.UpdateCooldown();
     }
 
     public void DoLightAttack(Character user, Character target)
     {
         if (!IsUsingAbility)
         {
-            LightAttack.StartAction(user, target);
+            LightAttack.ExecuteAction(user, target);
         }
     }
 

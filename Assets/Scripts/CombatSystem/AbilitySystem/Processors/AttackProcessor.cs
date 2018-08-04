@@ -1,63 +1,63 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackProcessor : ActionProcessor<Attack>
+[CreateAssetMenu]
+public class AttackProcessor : ActionProcessor
 {
-    public PriorityEvent<Attack> OnAttackStart = new PriorityEvent<Attack>();
-    public PriorityEvent<Attack> OnAttackConnect = new PriorityEvent<Attack>();
-    public PriorityEvent<Attack> OnAttackDefended = new PriorityEvent<Attack>();
-    public PriorityEvent<Attack> OnAttackMiss = new PriorityEvent<Attack>();
-    public PriorityEvent<Attack> OnAttackHit = new PriorityEvent<Attack>();
+    private string[] _eventNames = { "OnAttackStart", "OnAttackConnect", "OnAttackDefended",
+                                     "OnAttackMiss", "OnAttackHit" };
+    protected override string[] eventNames { get { return _eventNames; } set { _eventNames = value; } }
 
-    public override void ProcessStartEvents(Attack instance)
+    public override void ProcessStartEvents(ActionInstance Action)
     {
-        Character attacker = instance.User;
-        Character target = instance.Target;
+        Character attacker = Action.User;
+        Character target = Action.Target;
 
         Debug.Log("Attack Start. Target: " + target);
-        OnAttackStart.Trigger(instance);
-        attacker.OnAttackStart.Trigger(instance);
-        target.OnEnemyAttackStart.Trigger(instance);
+        Events["OnAttackStart"].Trigger(Action);
+        attacker.OnAttackStart.Trigger(Action);
+        target.OnEnemyAttackStart.Trigger(Action);
     }
 
-    public override void ProcessCompleteEvents(Attack instance)
+    public override void ProcessCompleteEvents(ActionInstance Action)
     {
-        Character attacker = instance.User;
-        Character target = instance.Target;
+        Character attacker = Action.User;
+        Character target = Action.Target;
 
         // Connect events
         Debug.Log("Attack Connect");
-        OnAttackConnect.Trigger(instance);
-        attacker.OnAttackConnect.Trigger(instance);
-        target.OnEnemyAttackConnect.Trigger(instance);
+        Events["OnAttackConnect"].Trigger(Action);
+        attacker.OnAttackConnect.Trigger(Action);
+        target.OnEnemyAttackConnect.Trigger(Action);
 
         // Determine defended
         if (target.IsDefending)
         {
             // Defended events
             Debug.Log("Attack Defended");
-            OnAttackDefended.Trigger(instance);
-            attacker.OnAttackDefended.Trigger(instance);
-            target.OnEnemyAttackDefended.Trigger(instance);
+            Events["OnAttackDefended"].Trigger(Action);
+            attacker.OnAttackDefended.Trigger(Action);
+            target.OnEnemyAttackDefended.Trigger(Action);
         }
 
         // Determine if attack misses
-        if (instance.Miss)
+        if (Action.Miss)
         {
             // Miss events
             Debug.Log("Attack Miss");
-            OnAttackMiss.Trigger(instance);
-            attacker.OnAttackMiss.Trigger(instance);
-            target.OnEnemyAttackMiss.Trigger(instance);
+            Events["OnAttackMiss"].Trigger(Action);
+            attacker.OnAttackMiss.Trigger(Action);
+            target.OnEnemyAttackMiss.Trigger(Action);
         }
         else
         {
             // Hit events
             Debug.Log("Attack Hit");
-            OnAttackHit.Trigger(instance);
-            attacker.OnAttackHit.Trigger(instance);
-            target.OnEnemyAttackHit.Trigger(instance);
+            Events["OnAttackHit"].Trigger(Action);
+            attacker.OnAttackHit.Trigger(Action);
+            target.OnEnemyAttackHit.Trigger(Action);
         }
     }
 }

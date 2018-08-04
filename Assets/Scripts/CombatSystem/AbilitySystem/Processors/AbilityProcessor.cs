@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityProcessor : ActionProcessor<Ability>
+[CreateAssetMenu]
+public class AbilityProcessor : ActionProcessor
 {
-    public PriorityEvent<Ability> OnAbilityStart = new PriorityEvent<Ability>();
-    public PriorityEvent<Ability> OnAbilityComplete = new PriorityEvent<Ability>();
+    private string[] _eventNames = { "OnStart", "OnComplete" };
+    protected override string[] eventNames { get { return _eventNames; } set { _eventNames = value; } }
 
-    public override void ProcessCompleteEvents(Ability instance)
+    public override void ProcessCompleteEvents(ActionInstance action)
     {
-        OnAbilityStart.Trigger(instance);
+        Events["OnStart"].Trigger(action);
     }
 
-    public override void ProcessStartEvents(Ability instance)
+    public override void ProcessStartEvents(ActionInstance action)
     {
-        OnAbilityComplete.Trigger(instance);
+        Events["OnComplete"].Trigger(action);
     }
 }

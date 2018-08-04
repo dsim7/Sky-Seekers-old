@@ -90,14 +90,13 @@ public class TextFade : MonoBehaviour
             builder.Append(_text[i]);
             builder.Append("</color>");
         }
+        
 
         // Each frame, update the alpha values along the fading frontier.
         float fadingProgress = 0f;
         int opaqueChars = -1;
         while (opaqueChars < length - 1 && !Input.GetButtonDown("Fire1"))
         {
-            yield return null;
-
             fadingProgress += Time.deltaTime;
 
             float leadingEdge = fadingProgress * travelSpeed;
@@ -120,6 +119,8 @@ public class TextFade : MonoBehaviour
 
             // This allocates a new string.
             _textObject.text = builder.ToString();
+            
+            yield return null;
         }
 
         Finish();

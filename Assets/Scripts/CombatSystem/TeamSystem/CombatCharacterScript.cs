@@ -8,8 +8,8 @@ public class CombatCharacterScript : MonoBehaviour
     private Character _character;
     public Character Character { get { return _character; } set { _character = value; } }
     
-    private PriorityAction<Attack> _animateAttackAction;
-    private Ability _abilityBeingExecuted;
+    private PriorityAction<ActionInstance> _animateAttackAction;
+    private ActionInstance _abilityBeingExecuted;
 
     private CharacterMoverScript _mover;
 
@@ -17,7 +17,7 @@ public class CombatCharacterScript : MonoBehaviour
     {
         _mover = GetComponent<CharacterMoverScript>();
 
-        _animateAttackAction = new PriorityAction<Attack>(10000, StartAnimateAttack);
+        _animateAttackAction = new PriorityAction<ActionInstance>(10000, StartAnimateAttack);
         _character.OnAttackStart.RegisterAction(_animateAttackAction);
         _character.RegisterMods();
     }
@@ -27,7 +27,7 @@ public class CombatCharacterScript : MonoBehaviour
         _character.UpdateCooldowns();
     }
 
-    void StartAnimateAttack(Attack attack)
+    void StartAnimateAttack(ActionInstance attack)
     {
         _abilityBeingExecuted = attack;
 
@@ -36,7 +36,7 @@ public class CombatCharacterScript : MonoBehaviour
         // animate
         Animator animator = GetComponent<Animator>();
         animator.SetFloat("AttackSpeed", attack.Speed);
-        animator.SetTrigger(attack.Template.AnimationName);
+        animator.SetTrigger(attack.Animation);
         
         // move
         if (_mover != null)
@@ -47,7 +47,7 @@ public class CombatCharacterScript : MonoBehaviour
 
     public void AttackEffect()
     {
-        _abilityBeingExecuted.Template.CompleteAction();
+        _abilityBeingExecuted.Complete();
     }
 
     public void CompleteAnimateAttack()
