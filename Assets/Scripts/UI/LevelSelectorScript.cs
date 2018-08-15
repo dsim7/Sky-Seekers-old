@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelSelectorScript : MonoBehaviour {
-    
-
-
+public class LevelSelectorScript : MonoBehaviour
+{
     public void Show()
     {
         CanvasGroup group = GetComponent<CanvasGroup>();

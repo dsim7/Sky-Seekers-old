@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MenuCharacterSelect : MonoBehaviour {
-
+public class MenuCharacterSelect : MonoBehaviour
+{
     [SerializeField]
     private GameObject cameraTarget;
     [SerializeField]

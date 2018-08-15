@@ -2,62 +2,103 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterMoverScript), typeof(Animator))]
 public class CombatCharacterScript : MonoBehaviour
 {
     [SerializeField]
     private Character _character;
     public Character Character { get { return _character; } set { _character = value; } }
     
-    private PriorityAction<ActionInstance> _animateAttackAction;
-    private ActionInstance _abilityBeingExecuted;
+    private ActionInstance _actionBeingExecuted;
 
+    private Animator _animator;
     private CharacterMoverScript _mover;
 
     void Start()
     {
+        _animator = GetComponent<Animator>();
         _mover = GetComponent<CharacterMoverScript>();
 
-        _animateAttackAction = new PriorityAction<ActionInstance>(10000, StartAnimateAttack);
-        _character.OnAttackStart.RegisterAction(_animateAttackAction);
+        _character.OnDeath.AddListener(Die);
+        _character.OnActionStart.RegisterAction(new ActionMod(10000, StartAnimateAction));
         _character.RegisterMods();
     }
-
-    void Update()
-    {
-        _character.UpdateCooldowns();
-    }
-
-    void StartAnimateAttack(ActionInstance attack)
-    {
-        _abilityBeingExecuted = attack;
-
-        Character.IsUsingAbility = true;
+    
+    public void StartAnimateAction(ActionInstance action)
+    {    
+        _actionBeingExecuted = action;
 
         // animate
-        Animator animator = GetComponent<Animator>();
-        animator.SetFloat("AttackSpeed", attack.Speed);
-        animator.SetTrigger(attack.Animation);
-        
-        // move
-        if (_mover != null)
+        _animator.SetFloat("AttackSpeed", action.AnimationSpeed);
+        _animator.SetTrigger(action.Animation);
+
+        if (_mover != null && action.MoveToAttackPosition)
         {
             _mover.GoToAttackPosition();
         }
     }
 
-    public void AttackEffect()
+    public void InterruptAnimateAction()
     {
-        _abilityBeingExecuted.Complete();
+        if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Death"))
+        {
+            _animator.SetTrigger("Idle");
+        }
+        _actionBeingExecuted = null;
     }
 
-    public void CompleteAnimateAttack()
-    {
-        Character.IsUsingAbility = false;
+    //public void CompleteAnimateAction()
+    //{
+    //    if (_mover != null && _actionBeingExecuted.MoveToAttackPosition)
+    //    {
+    //        _mover.GoBack();
+    //    }
 
-        // move
-        if (_mover != null)
+    //    _actionBeingExecuted = null;
+    //}
+
+    public void CompleteAnimateAction()
+    {
+        // Action Complete callback
+        if (_actionBeingExecuted != null)
         {
-            _mover.GoToHoldPosition();
+            _actionBeingExecuted.Template.CompleteAction(_actionBeingExecuted);
+        }
+
+        // Action sfx's
+        if (_actionBeingExecuted.UserSfx != null)
+        {
+            _actionBeingExecuted.UserSfx.Display(transform.position);
+        }
+        if (_actionBeingExecuted.TargetSfx != null)
+        {
+            _actionBeingExecuted.TargetSfx.Display(_actionBeingExecuted.Target.transform.position);
+        }
+
+        // Move character back
+        if (_mover != null && _actionBeingExecuted.MoveToAttackPosition)
+        {
+            _mover.GoBack();
+        }
+
+        // Reset action being executed
+        _actionBeingExecuted = null;
+    }
+
+    void Die()
+    {
+        _mover.GoToMainPosition();
+        _animator.SetTrigger("Death");
+        _actionBeingExecuted = null;
+    }
+
+    public void ExecuteAction(ActionTemplate template, TeamScript team)
+    {
+        if (!Character.IsDead &&
+            !template.Targeting.GetTarget(this, team).Character.IsDead &&
+            _actionBeingExecuted == null)
+        {
+            template.ExecuteAction(this, team);
         }
     }
 }

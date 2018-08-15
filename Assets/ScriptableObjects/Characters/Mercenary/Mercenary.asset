@@ -14,13 +14,19 @@ MonoBehaviour:
   _name: Mercenary
   _avatar: {fileID: 21300000, guid: c82cc2253a20a5f43a0ac713c23634e6, type: 3}
   _health: 125
-  _curHealth: 0
+  _currentHealth: 125
   _attackPower: 15
   _armor: 0.5
-  _equipped: {fileID: 11400000, guid: 2aa6126be55d4a5439b1bf6e0a287b67, type: 2}
-  _lightAttack: {fileID: 11400000, guid: dfd2fc00cd132474b991f508c16c75de, type: 2}
-  _heavyAttack: {fileID: 0}
-  _specialAttack: {fileID: 0}
-  _supportAbility: {fileID: 0}
-  _defensiveAbility: {fileID: 0}
   _isDefending: 0
+  _isDead: 0
+  _equipped: {fileID: 11400000, guid: 2aa6126be55d4a5439b1bf6e0a287b67, type: 2}
+  _lightAttack: {fileID: 11400000, guid: 696ef8976af0d2e4eac923fe3578950f, type: 2}
+  _heavyAttack: {fileID: 11400000, guid: ec3e6e4ad1bc4b547bc103b14888fa40, type: 2}
+  _specialAttack: {fileID: 11400000, guid: ee2c3bd2d7ac7de4497c97d5abc831b5, type: 2}
+  _supportAbility: {fileID: 11400000, guid: 852cb12930beb254abe3f945a0fd4b99, type: 2}
+  _defensiveAbility: {fileID: 11400000, guid: 999d459393ab4b146b98a638ca1d788e, type: 2}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

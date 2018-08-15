@@ -2,63 +2,122 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class ActionTemplate
+[CreateAssetMenu(menuName = "Combat/ActionTemplate")]
+public class ActionTemplate : ScriptableObject
 {
-    [SerializeField]
-    private CooldownHandler _cooldown;
-    public CooldownHandler Cooldown { get { return _cooldown; } private set { _cooldown = value; } }
+    private ActionModEvent _onStart = new ActionModEvent();
+    public ActionModEvent OnStart { get { return _onStart; } private set { _onStart = value; } }
+    
+    private ActionModEvent _onComplete = new ActionModEvent();
+    public ActionModEvent OnComplete { get { return _onComplete; } private set { _onComplete = value; } }
 
+    [Header("Base Data")]
     [SerializeField]
-    private ActionProcessor _processor;
-    public ActionProcessor Processor { get { return _processor; } private set { _processor = value; } }
-
+    private ActionType _actionType = null;
     [SerializeField]
-    private ActionEffector _effector;
-    public ActionEffector Effector { get { return _effector; } private set { _effector = value; } }
-
+    private float _baseCooldown;
+    public float Cooldown { get; set; }
+    public float CooldownFinish { get; set; }
+    private float _cooldownStart;
+    public float CurrentCooldown { get { return (Time.time - _cooldownStart) / (CooldownFinish - _cooldownStart); } }
     [SerializeField]
-    private ActionInitializer _initializer;
-    public ActionInitializer Initializer { get { return _initializer; } private set { _initializer = value; } }
+    private Targeting _targeting;
+    public Targeting Targeting { get { return _targeting; } set { _targeting = value; } }
+    
+    [Header("Effects")]
+    [SerializeField]
+    private UnityEvent _effect;
+    [SerializeField]
+    private float _duration = 0;
+    [SerializeField]
+    private float _effectIntensity = 1;
 
-    public void ExecuteAction(Character user, Character target)
+    [Header("Animations")]
+    [SerializeField]
+    private string _animation = "Attack";
+    [SerializeField]
+    private float _animationSpeed = 1f;
+    [SerializeField]
+    private bool _movesToAttackPosition = true;
+
+    [Header("Special Effects")]
+    [SerializeField]
+    private SpecialEffect _userSfx;
+    [SerializeField]
+    private SpecialEffect _targetSfx;
+
+    [Header("Damage")]
+    [SerializeField]
+    private DamageType _damageType;
+    [SerializeField]
+    private float _baseDamage = 0;
+
+    [Header("Healing")]
+    [SerializeField]
+    private float _baseHealing = 0;
+
+    void OnEnable()
     {
-        if (_cooldown.OffCooldown())
+        _cooldownStart = 0;
+        Cooldown = _baseCooldown;
+        CooldownFinish = 0;
+    }
+
+    ActionInstance GenerateInstance()
+    {
+        ActionInstance newAction = new ActionInstance();
+
+        // Initialize Data
+        newAction.ActionType = _actionType;
+        newAction.Effect = _effect;
+        newAction.Duration = _duration;
+        newAction.Animation = _animation;
+        newAction.AnimationSpeed = _animationSpeed;
+        newAction.DamageType = _damageType;
+        newAction.Damage = _baseDamage;
+        newAction.Healing = _baseHealing;
+        newAction.EffectIntensity = _effectIntensity;
+        newAction.UserSfx = _userSfx;
+        newAction.TargetSfx = _targetSfx;
+        newAction.MoveToAttackPosition = _movesToAttackPosition;
+
+        return newAction;
+    }
+
+    public void ExecuteAction(CombatCharacterScript user, TeamScript team)
+    {
+        if (Time.time >= CooldownFinish)
         {
-            ActionInstance newAction = new ActionInstance(Initializer, Effector, Processor, Cooldown);
-            newAction.Start(user, target);
+            ActionInstance action = GenerateInstance();
+            action.User = user;
+            action.Target = _targeting.GetTarget(user, team);
+            action.Template = this;
+
+            OnStart.Trigger(action);
+            user.Character.OnActionStart.Trigger(action);
+            action.Target.Character.OnEnemyActionStart.Trigger(action);
         }
     }
+
+    public void CompleteAction(ActionInstance action)
+    {
+        // Event callbacks
+        OnComplete.Trigger(action);
+        action.User.Character.OnActionComplete.Trigger(action);
+        action.Target.Character.OnEnemyActionComplete.Trigger(action);
+
+        // Invoke effect
+        action.Effect.Invoke();
+
+        // Damage and healing
+        action.Target.Character.CurrentHealth += action.Healing;
+        Debug.Log("Damage Done: " + action.Damage);
+        action.Target.Character.CurrentHealth -= action.Damage;
+
+        // Start cooldown
+        _cooldownStart = Time.time;
+        CooldownFinish = Time.time + Cooldown;
+    }
 }
-
-//public class AttackTemplate : ActionTemplate<AttackData>
-//{
-//    [SerializeField]
-//    private ActionProcessor<AttackData> _processor;
-//    public override ActionProcessor<AttackData> Processor { get { return _processor; } set { _processor = value; } }
-
-//    [SerializeField]
-//    private ActionEffector<AttackData> _effector = new AttackEffector();
-//    public override ActionEffector<AttackData> Effector { get { return _effector; } set { _effector = value; } }
-
-//    [SerializeField]
-//    private ActionInitializer<AttackData> _initializer = new AttackInitializer();
-//    public override ActionInitializer<AttackData> Initializer { get { return _initializer; } set { _initializer = value; } }
-    
-//}
-
-//public class AbilityTemplate : ActionTemplate<AbilityData>
-//{
-//    [SerializeField]
-//    private ActionProcessor<AbilityData> _processor;
-//    public override ActionProcessor<AbilityData> Processor { get { return _processor; } set { _processor = value; } }
-
-//    [SerializeField]
-//    private ActionEffector<AbilityData> _effector = new AbilityEffector();
-//    public override ActionEffector<AbilityData> Effector { get { return _effector; } set { _effector = value; } }
-
-//    [SerializeField]
-//    private ActionInitializer<AbilityData> _initializer = new AbilityInitializer();
-//    public override ActionInitializer<AbilityData> Initializer { get { return _initializer; } set { _initializer = value; } }
-
-//}

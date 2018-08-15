@@ -11,5 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dafd3c718fbfa4479596970a163e86a, type: 3}
   m_Name: BasicCooldown
   m_EditorClassIdentifier: 
-  _cooldown: 0
-  _timeRemaining: 0
+  _cooldown: 0.343
+  _timeRemaining: -0.00010076538

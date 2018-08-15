@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-public class SelectableCharacterScript : MonoBehaviour {
-
+public class SelectableCharacterScript : MonoBehaviour
+{
     [SerializeField]
     private GameObject characterSelector;
 

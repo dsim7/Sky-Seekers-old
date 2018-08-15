@@ -3,24 +3,24 @@
 [CreateAssetMenu(menuName = "Sigils/Templates/FireSigil")]
 public class FireSigil : SigilTemplate
 {
-    private PriorityAction<ActionInstance> _mod;
+    private ActionMod _mod;
 
     public override void ModifyCharacter(Character character)
     {
-        _mod = new PriorityAction<ActionInstance>(10, Effect);
-        character.HeavyAttack.Processor.Subscribe("OnAttackHit", _mod);
+        _mod = new ActionMod(0, Effect);
+        character.HeavyAttack.OnComplete.RegisterAction(_mod);
     }
 
     public override void UnmodifyCharacter(Character character)
     {
         if (_mod != null)
         {
-            character.HeavyAttack.Processor.Unsubscribe("OnAttackHit", _mod);
+            character.HeavyAttack.OnComplete.UnregisterAction(_mod);
         }
     }
 
     public void Effect(ActionInstance attack)
     {
-        Debug.Log("Fire Sigil Effect");
+        attack.User.Character.SpecialAttack.CooldownFinish = Time.time;
     }
 }

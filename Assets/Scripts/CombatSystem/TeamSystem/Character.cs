@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 [CreateAssetMenu(menuName = "Character")]
-public class Character : ScriptableObject {
-
+public class Character : ScriptableObject
+{
     [Header("Appearance")]
     [SerializeField]
     private string _name;
@@ -21,8 +21,20 @@ public class Character : ScriptableObject {
     public float Health { get { return _health; } set { _health = value; } }
 
     [SerializeField]
-    private float _curHealth;
-    public float CurrentHealth { get { return _curHealth; } set { _curHealth = value; } }
+    private float _currentHealth;
+    public float CurrentHealth
+    {
+        get { return _currentHealth; }
+
+        set
+        {
+            if (!_isDead)
+            {
+                _currentHealth = Mathf.Clamp(value, 0, _health);
+                CheckHealth();
+            }
+        }
+    }
 
     [SerializeField]
     private float _attackPower;
@@ -31,6 +43,14 @@ public class Character : ScriptableObject {
     [SerializeField]
     private float _armor;
     public float Armor { get { return _armor; } set { _armor = value; } }
+
+    [SerializeField]
+    private bool _isDefending;
+    public bool IsDefending { get { return _isDefending; } set { _isDefending = value; } }
+
+    [SerializeField]
+    private bool _isDead;
+    public bool IsDead { get { return _isDead; } set { _isDead = value; } }
 
     [Header("Equipment")]
     [SerializeField]
@@ -41,7 +61,7 @@ public class Character : ScriptableObject {
     [SerializeField]
     private ActionTemplate _lightAttack;
     public ActionTemplate LightAttack { get { return _lightAttack; } set { _lightAttack = value; } }
-    
+
     [SerializeField]
     private ActionTemplate _heavyAttack;
     public ActionTemplate HeavyAttack { get { return _heavyAttack; } set { _heavyAttack = value; } }
@@ -58,29 +78,20 @@ public class Character : ScriptableObject {
     private ActionTemplate _defensiveAbility;
     public ActionTemplate DefensiveAbility { get { return _defensiveAbility; } set { _defensiveAbility = value; } }
 
-    public PriorityEvent<ActionInstance> OnAttackStart = new PriorityEvent<ActionInstance>();
-    public PriorityEvent<ActionInstance> OnAttackConnect = new PriorityEvent<ActionInstance>();
-    public PriorityEvent<ActionInstance> OnAttackDefended = new PriorityEvent<ActionInstance>();
-    public PriorityEvent<ActionInstance> OnAttackMiss = new PriorityEvent<ActionInstance>();
-    public PriorityEvent<ActionInstance> OnAttackHit = new PriorityEvent<ActionInstance>();
+    public ActionModEvent OnActionStart = new ActionModEvent();
+    public ActionModEvent OnActionComplete = new ActionModEvent();
 
-    public PriorityEvent<ActionInstance> OnEnemyAttackStart = new PriorityEvent<ActionInstance>();
-    public PriorityEvent<ActionInstance> OnEnemyAttackConnect = new PriorityEvent<ActionInstance>();
-    public PriorityEvent<ActionInstance> OnEnemyAttackDefended = new PriorityEvent<ActionInstance>();
-    public PriorityEvent<ActionInstance> OnEnemyAttackMiss = new PriorityEvent<ActionInstance>();
-    public PriorityEvent<ActionInstance> OnEnemyAttackHit = new PriorityEvent<ActionInstance>();
+    public ActionModEvent OnEnemyActionStart = new ActionModEvent();
+    public ActionModEvent OnEnemyActionComplete = new ActionModEvent();
 
-    //public PriorityEvent<Utility> OnSupportUsed = new PriorityEvent<Utility>();
+    [HideInInspector]
+    public UnityEvent OnDeath = new UnityEvent();
 
-    //public PriorityEvent<Utility> OnDefensiveUsed = new PriorityEvent<Utility>();
-
-    [SerializeField]
-    private bool _isUsingAbility = false;
-    public bool IsUsingAbility { get { return _isUsingAbility; } set { _isUsingAbility = value; } }
-
-    [SerializeField]
-    private bool _isDefending;
-    public bool IsDefending { get { return _isDefending; } set { _isDefending = value; } }
+    void OnEnable()
+    {
+        _currentHealth = _health;
+        _isDead = false;
+    }
 
     public void RegisterMods()
     {
@@ -92,26 +103,16 @@ public class Character : ScriptableObject {
         Equipped.Slots.ForEach(slot => ((SigilTemplate)slot.Value.Template).UnmodifyCharacter(this));
     }
 
-    public void UpdateCooldowns()
+    public void CheckHealth()
     {
-        if (LightAttack != null)
-            LightAttack.Cooldown.UpdateCooldown();
-        if (HeavyAttack != null)
-            HeavyAttack.Cooldown.UpdateCooldown();
-        if (SpecialAttack != null)
-            SpecialAttack.Cooldown.UpdateCooldown();
-        if (SupportAbility != null)
-            SupportAbility.Cooldown.UpdateCooldown();
-        if (DefensiveAbility != null)
-            DefensiveAbility.Cooldown.UpdateCooldown();
-    }
-
-    public void DoLightAttack(Character user, Character target)
-    {
-        if (!IsUsingAbility)
+        if (_currentHealth == 0)
         {
-            LightAttack.ExecuteAction(user, target);
+            OnDeath.Invoke();
+            _isDead = true;
+        }
+        else if (_isDead)
+        {
+            _isDead = false;
         }
     }
-
 }

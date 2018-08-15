@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11dea2a77d398694ab9b8c283615be80, type: 3}
+  m_Name: MercenaryLight
+  m_EditorClassIdentifier: 
+  _actionType: {fileID: 11400000, guid: 76daf2a32f4d7f64ea6cde674beb3cd3, type: 2}
+  _baseCooldown: 1
+  _targeting: {fileID: 11400000, guid: 76f83ee41a392cd4d8205434dd620b10, type: 2}
+  _effect:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _duration: 0
+  _effectIntensity: 1
+  _animation: Attack
+  _animationSpeed: 1
+  _movesToAttackPosition: 1
+  _userSfx: {fileID: 0}
+  _targetSfx: {fileID: 11400000, guid: d6f0271de436fff4ca9d69c888da0c31, type: 2}
+  _damageType: {fileID: 11400000, guid: d47ede71335d1b54c89d9f154b222c8b, type: 2}
+  _baseDamage: 10
+  _baseHealing: 0

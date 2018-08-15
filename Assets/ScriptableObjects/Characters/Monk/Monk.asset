@@ -14,13 +14,19 @@ MonoBehaviour:
   _name: Monk
   _avatar: {fileID: 21300000, guid: 389ad157a90e9a6419ca6e9f1f6c1ea6, type: 3}
   _health: 150
-  _curHealth: 0
+  _currentHealth: 150
   _attackPower: 10
   _armor: 1.5
-  _equipped: {fileID: 11400000, guid: e2dcaef4950b8924b8738e40b63ab286, type: 2}
-  _lightAttack: {fileID: 11400000, guid: 0dcaa21d130d34b49b9a1ed320d7c981, type: 2}
-  _heavyAttack: {fileID: 11400000, guid: 9d7bb79ed68a2bc4f880b6b9a92d7d17, type: 2}
-  _specialAttack: {fileID: 11400000, guid: 78395067343a2954f8d0d23d4633487a, type: 2}
-  _supportAbility: {fileID: 11400000, guid: f4ed3e48c5b6187469836552e2bd7e27, type: 2}
-  _defensiveAbility: {fileID: 11400000, guid: 74d594e975dd8344aaee4ae3e4321773, type: 2}
   _isDefending: 0
+  _isDead: 0
+  _equipped: {fileID: 11400000, guid: e2dcaef4950b8924b8738e40b63ab286, type: 2}
+  _lightAttack: {fileID: 11400000, guid: b4a70b002d087744aafdeebc41ba9427, type: 2}
+  _heavyAttack: {fileID: 11400000, guid: 9aac7fb754658e14ebf689d86e2764d2, type: 2}
+  _specialAttack: {fileID: 11400000, guid: 18252364eec340045b53139853102f52, type: 2}
+  _supportAbility: {fileID: 11400000, guid: 1476bed442d653040b7cfe98309f2ae2, type: 2}
+  _defensiveAbility: {fileID: 11400000, guid: 7e584346a41c2e940b3818cfc1efea87, type: 2}
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
