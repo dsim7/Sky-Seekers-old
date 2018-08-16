@@ -25,7 +25,7 @@ MonoBehaviour:
   _animationSpeed: 1
   _movesToAttackPosition: 1
   _userSfx: {fileID: 0}
-  _targetSfx: {fileID: 11400000, guid: d6f0271de436fff4ca9d69c888da0c31, type: 2}
+  _targetSfx: {fileID: 11400000, guid: 2875dd38bebc113469732085fd89f429, type: 2}
   _damageType: {fileID: 11400000, guid: d47ede71335d1b54c89d9f154b222c8b, type: 2}
   _baseDamage: 10
   _baseHealing: 0

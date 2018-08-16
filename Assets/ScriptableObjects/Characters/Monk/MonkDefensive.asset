@@ -21,11 +21,11 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   _duration: 0
   _effectIntensity: 1
-  _animation: Attack
+  _animation: Block
   _animationSpeed: 1
-  _movesToAttackPosition: 1
+  _movesToAttackPosition: 0
   _userSfx: {fileID: 0}
-  _targetSfx: {fileID: 11400000, guid: 7788090ff73a5f74b9f2f81e19f3c2cb, type: 2}
-  _damageType: {fileID: 11400000, guid: d47ede71335d1b54c89d9f154b222c8b, type: 2}
-  _baseDamage: 10
-  _baseHealing: 0
+  _targetSfx: {fileID: 11400000, guid: 713ed26771406a24eb014de0890daa6f, type: 2}
+  _damageType: {fileID: 0}
+  _baseDamage: 0
+  _baseHealing: 25

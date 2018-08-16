@@ -21,7 +21,7 @@ public class ActionInstance
     public bool Miss { get; set; }
     public float Duration { get; set; }
     public float EffectIntensity { get; set; }
-    public SpecialEffect UserSfx { get; set; }
-    public SpecialEffect TargetSfx { get; set; }
+    public ParticleSystemPool UserSfx { get; set; }
+    public ParticleSystemPool TargetSfx { get; set; }
     public bool MoveToAttackPosition { get; set; }
 }

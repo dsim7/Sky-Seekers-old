@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73d3694d93e6f064db2b7f1a0448a03f, type: 3}
-  m_Name: Physical
+  m_Script: {fileID: 11500000, guid: e8054eb56b51c6a418fafd07b1db70e7, type: 3}
+  m_Name: FloatingCombatText
   m_EditorClassIdentifier: 
-  _color: {r: 1, g: 1, b: 1, a: 1}
+  _prefab: {fileID: 102137121064447828, guid: 5fe0a2a3806510b408ff49893566095f, type: 2}

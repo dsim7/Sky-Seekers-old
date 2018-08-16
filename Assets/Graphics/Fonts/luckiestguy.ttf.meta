@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: a68d9b4950c487b41af37f7cd462190e
+guid: 5fbf5ece189128f4b85846e774e41350
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 130
+  fontSize: 16
   forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: BlackChancery
+  fontName: Luckiest Guy
   fontNames:
-  - BlackChancery
+  - Luckiest Guy
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

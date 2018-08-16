@@ -24,7 +24,7 @@ public class ActionTemplate : ScriptableObject
     public float CurrentCooldown { get { return (Time.time - _cooldownStart) / (CooldownFinish - _cooldownStart); } }
     [SerializeField]
     private Targeting _targeting;
-    public Targeting Targeting { get { return _targeting; } set { _targeting = value; } }
+    public Targeting Targeting { get { return _targeting; } }
     
     [Header("Effects")]
     [SerializeField]
@@ -44,9 +44,9 @@ public class ActionTemplate : ScriptableObject
 
     [Header("Special Effects")]
     [SerializeField]
-    private SpecialEffect _userSfx;
+    private ParticleSystemPool _userSfx;
     [SerializeField]
-    private SpecialEffect _targetSfx;
+    private ParticleSystemPool _targetSfx;
 
     [Header("Damage")]
     [SerializeField]

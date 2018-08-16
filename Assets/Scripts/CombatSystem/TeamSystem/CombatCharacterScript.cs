@@ -8,7 +8,9 @@ public class CombatCharacterScript : MonoBehaviour
     [SerializeField]
     private Character _character;
     public Character Character { get { return _character; } set { _character = value; } }
-    
+    [SerializeField]
+    private FloatingTextPool _floatingTextSfx;
+
     private ActionInstance _actionBeingExecuted;
 
     private Animator _animator;
@@ -21,6 +23,7 @@ public class CombatCharacterScript : MonoBehaviour
 
         _character.OnDeath.AddListener(Die);
         _character.OnActionStart.RegisterAction(new ActionMod(10000, StartAnimateAction));
+        _character.OnEnemyActionComplete.RegisterAction(new ActionMod(10000, FloatingCombatTextDisplay));
         _character.RegisterMods();
     }
     
@@ -68,11 +71,18 @@ public class CombatCharacterScript : MonoBehaviour
         // Action sfx's
         if (_actionBeingExecuted.UserSfx != null)
         {
-            _actionBeingExecuted.UserSfx.Display(transform.position);
+            ParticleSystem sfx = _actionBeingExecuted.UserSfx.GetNext();
+            sfx.transform.SetParent(transform);
+            sfx.transform.position = transform.position;
+            sfx.Play();
         }
         if (_actionBeingExecuted.TargetSfx != null)
         {
-            _actionBeingExecuted.TargetSfx.Display(_actionBeingExecuted.Target.transform.position);
+            ParticleSystem sfx = _actionBeingExecuted.TargetSfx.GetNext();
+            Debug.Log(sfx);
+            sfx.transform.SetParent(_actionBeingExecuted.Target.transform);
+            sfx.transform.position = _actionBeingExecuted.Target.transform.position;
+            sfx.Play();
         }
 
         // Move character back
@@ -99,6 +109,29 @@ public class CombatCharacterScript : MonoBehaviour
             _actionBeingExecuted == null)
         {
             template.ExecuteAction(this, team);
+        }
+    }
+
+    public void FloatingCombatTextDisplay(ActionInstance action)
+    {
+        if (action.Damage > 0)
+        {
+            TextMesh floatingText = _floatingTextSfx.GetNext();
+            floatingText.transform.SetParent(transform);
+            floatingText.transform.position = transform.position;
+            floatingText.text = action.Damage.ToString("#");
+            floatingText.color = action.DamageType.Color;
+            floatingText.GetComponent<Animator>().SetTrigger("Appear");
+        }
+
+        if (action.Healing > 0)
+        {
+            TextMesh floatingText = _floatingTextSfx.GetNext();
+            floatingText.transform.SetParent(transform);
+            floatingText.transform.position = transform.position;
+            floatingText.text = action.Healing.ToString("#");
+            floatingText.color = Color.green;
+            floatingText.GetComponent<Animator>().SetTrigger("Appear");
         }
     }
 }
