@@ -23,7 +23,6 @@ public class CombatSigil : SigilTemplate
     public void Effect(ActionInstance attack)
     {
         attack.Damage *= 1.3f;
-        Debug.Log("Combat Sigil multiple attack: " + attack.Damage);
     }
 
 }

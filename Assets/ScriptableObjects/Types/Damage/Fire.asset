@@ -8,7 +8,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a79a3d12d040d5641930dc5e5133c1dc, type: 3}
-  m_Name: SFXBigPhysicalHit
+  m_Script: {fileID: 11500000, guid: 73d3694d93e6f064db2b7f1a0448a03f, type: 3}
+  m_Name: Fire
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 198942196714913556, guid: a3b8ed064f05f7c4286ad035691a7165, type: 2}
+  _color: {r: 1, g: 0.43551663, b: 0, a: 1}

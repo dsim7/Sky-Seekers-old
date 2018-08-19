@@ -32,7 +32,6 @@ public class TeamScript : MonoBehaviour
 
     public void DoLightAttack()
     {
-        Debug.Log("Team Light Attack");
         _main.ExecuteAction(_main.Character.LightAttack, this);
     }
 

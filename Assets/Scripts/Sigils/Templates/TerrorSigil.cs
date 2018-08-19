@@ -21,6 +21,6 @@ public class TerrorSigil : SigilTemplate
 
     public void Effect(ActionInstance utility)
     {
-        Debug.Log("Terror Sigil Effect");
+
     }
 }

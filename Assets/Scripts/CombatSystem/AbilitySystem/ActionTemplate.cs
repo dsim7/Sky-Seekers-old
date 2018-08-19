@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Events;
+﻿using UnityEngine;
 
 [CreateAssetMenu(menuName = "Combat/ActionTemplate")]
 public class ActionTemplate : ScriptableObject
@@ -28,11 +24,7 @@ public class ActionTemplate : ScriptableObject
     
     [Header("Effects")]
     [SerializeField]
-    private UnityEvent _effect;
-    [SerializeField]
-    private float _duration = 0;
-    [SerializeField]
-    private float _effectIntensity = 1;
+    private Buff _buff;
 
     [Header("Animations")]
     [SerializeField]
@@ -71,14 +63,12 @@ public class ActionTemplate : ScriptableObject
 
         // Initialize Data
         newAction.ActionType = _actionType;
-        newAction.Effect = _effect;
-        newAction.Duration = _duration;
         newAction.Animation = _animation;
         newAction.AnimationSpeed = _animationSpeed;
         newAction.DamageType = _damageType;
         newAction.Damage = _baseDamage;
         newAction.Healing = _baseHealing;
-        newAction.EffectIntensity = _effectIntensity;
+        newAction.Buff = _buff;
         newAction.UserSfx = _userSfx;
         newAction.TargetSfx = _targetSfx;
         newAction.MoveToAttackPosition = _movesToAttackPosition;
@@ -108,13 +98,15 @@ public class ActionTemplate : ScriptableObject
         action.User.Character.OnActionComplete.Trigger(action);
         action.Target.Character.OnEnemyActionComplete.Trigger(action);
 
-        // Invoke effect
-        action.Effect.Invoke();
+        // Apply buff
+        if (action.Buff != null)
+        {
+            action.Buff.ApplyEffect(action.Target);
+        }
 
         // Damage and healing
-        action.Target.Character.CurrentHealth += action.Healing;
-        Debug.Log("Damage Done: " + action.Damage);
-        action.Target.Character.CurrentHealth -= action.Damage;
+        action.Target.TakeDamage(action.Damage, action.DamageType);
+        action.Target.TakeHealing(action.Healing);
 
         // Start cooldown
         _cooldownStart = Time.time;

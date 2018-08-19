@@ -14,13 +14,7 @@ MonoBehaviour:
   _actionType: {fileID: 11400000, guid: 76daf2a32f4d7f64ea6cde674beb3cd3, type: 2}
   _baseCooldown: 1
   _targeting: {fileID: 11400000, guid: 76f83ee41a392cd4d8205434dd620b10, type: 2}
-  _effect:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  _duration: 0
-  _effectIntensity: 1
+  _buff: {fileID: 11400000, guid: 2d997581454f3a64c9b012cdd92ac57c, type: 2}
   _animation: Attack
   _animationSpeed: 1
   _movesToAttackPosition: 1

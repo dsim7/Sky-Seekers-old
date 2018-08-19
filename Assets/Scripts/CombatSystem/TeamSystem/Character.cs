@@ -83,12 +83,15 @@ public class Character : ScriptableObject
 
     public ActionModEvent OnEnemyActionStart = new ActionModEvent();
     public ActionModEvent OnEnemyActionComplete = new ActionModEvent();
+    
+    public List<Buff> Buffs = new List<Buff>();
 
     [HideInInspector]
     public UnityEvent OnDeath = new UnityEvent();
 
     void OnEnable()
     {
+        Buffs.Clear();
         _currentHealth = _health;
         _isDead = false;
     }
@@ -103,7 +106,7 @@ public class Character : ScriptableObject
         Equipped.Slots.ForEach(slot => ((SigilTemplate)slot.Value.Template).UnmodifyCharacter(this));
     }
 
-    public void CheckHealth()
+    void CheckHealth()
     {
         if (_currentHealth == 0)
         {
