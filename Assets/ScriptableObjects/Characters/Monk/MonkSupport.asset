@@ -11,16 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11dea2a77d398694ab9b8c283615be80, type: 3}
   m_Name: MonkSupport
   m_EditorClassIdentifier: 
+  _name: Heal
+  _tooltip: Heal your ally for 20. 9 second cooldown.
   _actionType: {fileID: 11400000, guid: af78b27ecf226964db0b32ac116acd70, type: 2}
-  _baseCooldown: 6
+  _baseCooldown: 9
   _targeting: {fileID: 11400000, guid: 81cde730ef4b9a74e9c9256e4f9a2fd0, type: 2}
-  _effect:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  _duration: 0
-  _effectIntensity: 1
+  _buff: {fileID: 0}
   _animation: Attack
   _animationSpeed: 1
   _movesToAttackPosition: 0

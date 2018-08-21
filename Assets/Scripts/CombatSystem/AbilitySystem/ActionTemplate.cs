@@ -9,6 +9,14 @@ public class ActionTemplate : ScriptableObject
     private ActionModEvent _onComplete = new ActionModEvent();
     public ActionModEvent OnComplete { get { return _onComplete; } private set { _onComplete = value; } }
 
+    [Header("Info")]
+    [SerializeField]
+    private string _name;
+    [TextArea]
+    [SerializeField]
+    private string _tooltip;
+    public string Tooltip { get { return _tooltip; } private set { _tooltip = value; } }
+
     [Header("Base Data")]
     [SerializeField]
     private ActionType _actionType = null;

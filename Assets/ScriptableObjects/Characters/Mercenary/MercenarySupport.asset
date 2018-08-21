@@ -11,21 +11,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11dea2a77d398694ab9b8c283615be80, type: 3}
   m_Name: MercenarySupport
   m_EditorClassIdentifier: 
+  _name: Deadly Strike
+  _tooltip: Strike in from the shadows, dealing 25 damage. 10 second cooldown.
   _actionType: {fileID: 11400000, guid: f2d70b0e9b501764d9f64748e997a82c, type: 2}
-  _baseCooldown: 4
+  _baseCooldown: 10
   _targeting: {fileID: 11400000, guid: 76f83ee41a392cd4d8205434dd620b10, type: 2}
-  _effect:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  _duration: 0
-  _effectIntensity: 1
+  _buff: {fileID: 0}
   _animation: Attack
   _animationSpeed: 1
   _movesToAttackPosition: 1
   _userSfx: {fileID: 0}
   _targetSfx: {fileID: 11400000, guid: 2875dd38bebc113469732085fd89f429, type: 2}
   _damageType: {fileID: 11400000, guid: d47ede71335d1b54c89d9f154b222c8b, type: 2}
-  _baseDamage: 20
+  _baseDamage: 25
   _baseHealing: 0

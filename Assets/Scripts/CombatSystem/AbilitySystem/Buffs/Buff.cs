@@ -50,14 +50,14 @@ public abstract class Buff : ScriptableObject
 
     public void CheckTime()
     {
-        if (Time.time >= FinishTime)
-        {
-            RemoveEffect();
-        }
         if (_tickRate != 0 && Time.time >= _timeOfNextTick)
         {
             OnTick();
             _timeOfNextTick += _tickRate;
+        }
+        if (Time.time >= FinishTime)
+        {
+            RemoveEffect();
         }
     }
 

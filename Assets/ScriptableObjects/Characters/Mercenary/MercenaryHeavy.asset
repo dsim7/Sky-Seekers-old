@@ -11,10 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11dea2a77d398694ab9b8c283615be80, type: 3}
   m_Name: MercenaryHeavy
   m_EditorClassIdentifier: 
+  _name: Heavy Slash
+  _tooltip: Deals 20 damage. 5 second cooldown.
   _actionType: {fileID: 11400000, guid: f2d70b0e9b501764d9f64748e997a82c, type: 2}
-  _baseCooldown: 4
+  _baseCooldown: 5
   _targeting: {fileID: 11400000, guid: 76f83ee41a392cd4d8205434dd620b10, type: 2}
-  _buff: {fileID: 11400000, guid: 2d997581454f3a64c9b012cdd92ac57c, type: 2}
+  _buff: {fileID: 0}
   _animation: Attack
   _animationSpeed: 1
   _movesToAttackPosition: 1

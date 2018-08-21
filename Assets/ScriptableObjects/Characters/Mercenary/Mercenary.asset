@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Mercenary
   _avatar: {fileID: 21300000, guid: c82cc2253a20a5f43a0ac713c23634e6, type: 3}
-  _health: 125
-  _currentHealth: 125
+  _health: 10000
+  _currentHealth: 10000
   _attackPower: 15
   _armor: 0.5
   _isDefending: 0
@@ -25,6 +25,7 @@ MonoBehaviour:
   _specialAttack: {fileID: 11400000, guid: ee2c3bd2d7ac7de4497c97d5abc831b5, type: 2}
   _supportAbility: {fileID: 11400000, guid: 852cb12930beb254abe3f945a0fd4b99, type: 2}
   _defensiveAbility: {fileID: 11400000, guid: 999d459393ab4b146b98a638ca1d788e, type: 2}
+  Buffs: []
   OnDeath:
     m_PersistentCalls:
       m_Calls: []

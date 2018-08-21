@@ -11,16 +11,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11dea2a77d398694ab9b8c283615be80, type: 3}
   m_Name: MercenaryDefensive
   m_EditorClassIdentifier: 
+  _name: Dodge
+  _tooltip: Perform a dodge. For a brief moment, attacks on you miss. 3 second cooldown.
   _actionType: {fileID: 11400000, guid: 9d803766f62a0f24f8b545f284b16967, type: 2}
-  _baseCooldown: 1
+  _baseCooldown: 3
   _targeting: {fileID: 11400000, guid: fe6bbee856d655647841f68b97b028ee, type: 2}
-  _effect:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  _duration: 0
-  _effectIntensity: 1
+  _buff: {fileID: 0}
   _animation: Block
   _animationSpeed: 1
   _movesToAttackPosition: 0

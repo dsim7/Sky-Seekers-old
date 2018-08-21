@@ -19,6 +19,8 @@ public class MenuCharacterSelect : MonoBehaviour
     private Text armorText;
     [SerializeField]
     private GameObject characterEquipped;
+    [SerializeField]
+    private ActionInfoPanel actionInfoPanel;
 
     public bool IsSelecting { get; set; }
 
@@ -34,10 +36,7 @@ public class MenuCharacterSelect : MonoBehaviour
 
     void Update()
     {
-        if (IsSelecting && Input.GetKeyDown(KeyCode.Escape))
-        {
-            SelectCharacter(null);
-        }
+
     }
     
 	public void InitCharacterSelect()
@@ -50,15 +49,10 @@ public class MenuCharacterSelect : MonoBehaviour
 
     public void SelectCharacter(SelectableCharacterScript selectedCharacter)
     {
-        // open panel or close panel
-        if (selectedCharacter == null)
-        {
-            panelAnimator.SetTrigger("Out");
-            return;
-        }
-        else if (!panelAnimator.GetCurrentAnimatorStateInfo(0).IsName("In"))
+        if (!panelAnimator.GetCurrentAnimatorStateInfo(0).IsName("In"))
         {
             panelAnimator.SetTrigger("In");
+            actionInfoPanel.Display();
         } 
 
         // update panel values
@@ -70,5 +64,13 @@ public class MenuCharacterSelect : MonoBehaviour
         armorText.text = characterObject.Armor.ToString("0.#");
         characterEquipped.GetComponent<InventoryScript>().Inventory = characterObject.Equipped;
 
+        // display action info
+        actionInfoPanel.UpdateDisplay(selectedCharacter.Char);
+
+    }
+
+    public void Hide()
+    {
+        panelAnimator.SetTrigger("Out");
     }
 }

@@ -13,19 +13,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Monk
   _avatar: {fileID: 21300000, guid: 389ad157a90e9a6419ca6e9f1f6c1ea6, type: 3}
-  _health: 100
-  _currentHealth: 0
+  _health: 1000
+  _currentHealth: 570
   _attackPower: 10
   _armor: 1.5
   _isDefending: 1
-  _isDead: 1
+  _isDead: 0
   _equipped: {fileID: 11400000, guid: e2dcaef4950b8924b8738e40b63ab286, type: 2}
   _lightAttack: {fileID: 11400000, guid: 0021e812c549c8e4182ff3cec52913b1, type: 2}
   _heavyAttack: {fileID: 11400000, guid: 0021e812c549c8e4182ff3cec52913b1, type: 2}
   _specialAttack: {fileID: 11400000, guid: 0021e812c549c8e4182ff3cec52913b1, type: 2}
   _supportAbility: {fileID: 11400000, guid: 0021e812c549c8e4182ff3cec52913b1, type: 2}
   _defensiveAbility: {fileID: 11400000, guid: 0021e812c549c8e4182ff3cec52913b1, type: 2}
-  Buffs: []
+  Buffs:
+  - {fileID: 0}
   OnDeath:
     m_PersistentCalls:
       m_Calls: []

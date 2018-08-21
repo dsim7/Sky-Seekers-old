@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a49282f3ea22d340b3aa066e216ecbe, type: 3}
-  m_Name: TestBuff
+  m_Name: BurningDot
   m_EditorClassIdentifier: 
   _intensity: 1
   _damageType: {fileID: 11400000, guid: 92e099ab20942c545a8e01c4563398d7, type: 2}
-  _damage: 3
+  _damage: 2
   _healing: 0
   _stacks: 0
-  _tickRate: 0.5
-  _duration: 30
+  _tickRate: 2
+  _duration: 12
   specialEffect: {fileID: 11400000, guid: 1204f49500518ed41b5b00dcd9a02d13, type: 2}

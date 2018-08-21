@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelectorScript : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject _levelSelector;
+
     public void Show()
     {
         CanvasGroup group = GetComponent<CanvasGroup>();
@@ -12,7 +15,12 @@ public class LevelSelectorScript : MonoBehaviour
         group.alpha = 1f;
     }
 
-    public void GoToTestLevel()
+    public void ShowLevelSelector()
+    {
+        _levelSelector.GetComponent<Animator>().SetTrigger("Appear");
+    }
+
+    public void StartLevel()
     {
         SceneManager.LoadScene("InLevel");
     }
